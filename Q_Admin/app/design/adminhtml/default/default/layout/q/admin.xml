@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>q/admin/Chart.js</script></action>
+            <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
+            <action method="addJs"><script>q/admin/noconflict.js</script></action>
+            <action method="addCss"><stylesheet>q/admin/legend.css</stylesheet></action>
+            <block type="core/html_calendar" name="html_calendar" as="html_calendar" template="page/js/calendar.phtml"/>
+            <action method="setTemplate">
+                <template>q_admin/page/head.phtml</template>
+            </action>
+        </reference>
+    </default>
+    <adminhtml_dashboard_index>
+        <reference name="head">
+            <action method="addJs"><stylesheet>q/admin/googleLoader.js</stylesheet></action>
+        </reference>
+    </adminhtml_dashboard_index>
+
+    <adminhtml_bestsellers_index>
+        <reference name="messages">
+            <action method="addNotice" translate="message">
+                <message>This report depends on timezone configuration. Once timezone is changed, the lifetime statistics need to be refreshed.</message>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="q_admin/adminhtml_bestsellers_form" name="bestseller_form" template="q_admin/bestsellers/form.phtml">
+                <block type="q_admin/adminhtml_bestsellers_tab_graph" name="bestseller_graph" as="bestseller_graph" template="q_admin/bestsellers/diagram.phtml" />
+                <block type="q_admin/adminhtml_bestsellers_tab_table" name="bestseller_table" as="bestseller_table" template="q_admin/bestsellers/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_bestsellers_index>
+
+    <adminhtml_bestsellers_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_bestsellers_form" name="bestseller_form" template="q_admin/bestsellers/form.phtml">
+                <block type="q_admin/adminhtml_bestsellers_tab_graph" name="bestseller_graph" as="bestseller_graph" template="q_admin/bestsellers/diagram.phtml" />
+                <block type="q_admin/adminhtml_bestsellers_tab_table" name="bestseller_table" as="bestseller_table" template="q_admin/bestsellers/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_bestsellers_ajaxblock>
+
+    <adminhtml_conversion_index>
+        <reference name="messages">
+            <action method="addNotice" translate="message">
+                <message>This report depends on timezone configuration. Once timezone is changed, the lifetime statistics need to be refreshed.</message>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="q_admin/adminhtml_conversion_form" name="conversion_form" template="q_admin/conversion/form.phtml">
+                <block type="q_admin/adminhtml_conversion_tab_graph" name="conversion_graph" as="conversion_graph" template="q_admin/conversion/diagram.phtml" />
+                <block type="q_admin/adminhtml_conversion_tab_table" name="conversion_table" as="conversion_table" template="q_admin/conversion/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_conversion_index>
+
+    <adminhtml_conversion_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_conversion_form" name="conversion_form" template="q_admin/conversion/form.phtml">
+                <block type="q_admin/adminhtml_conversion_tab_graph" name="conversion_graph" as="conversion_graph" template="q_admin/conversion/diagram.phtml" />
+                <block type="q_admin/adminhtml_conversion_tab_table" name="conversion_table" as="conversion_table" template="q_admin/conversion/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_conversion_ajaxblock>
+
+    <adminhtml_trend_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_trend_form" name="trend_form" template="q_admin/trend/form.phtml">
+                <block type="q_admin/adminhtml_trend_tab_graph" name="trend_graph" as="trend_graph" template="q_admin/trend/diagram.phtml" />
+                <block type="q_admin/adminhtml_trend_tab_table" name="trend_table" as="trend_table" template="q_admin/trend/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_trend_index>
+
+    <adminhtml_trend_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_trend_form" name="trend_form" template="q_admin/trend/form.phtml">
+                <block type="q_admin/adminhtml_trend_tab_graph" name="trend_graph" as="trend_graph" template="q_admin/trend/diagram.phtml" />
+                <block type="q_admin/adminhtml_trend_tab_table" name="trend_table" as="trend_table" template="q_admin/trend/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_trend_ajaxblock>
+
+    <adminhtml_customergroup_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_customer_form" name="customer_form" template="q_admin/customer/form.phtml">
+                <block type="q_admin/adminhtml_customer_tab_graph" name="customer_graph" as="customer_graph" template="q_admin/customer/diagram.phtml" />
+            </block>
+        </reference>
+    </adminhtml_customergroup_index>
+
+    <adminhtml_customergroup_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_customer_form" name="customer_form" template="q_admin/customer/form.phtml">
+                <block type="q_admin/adminhtml_customer_tab_graph" name="customer_graph" as="customer_graph" template="q_admin/customer/diagram.phtml" />
+            </block>
+        </reference>
+    </adminhtml_customergroup_ajaxblock>
+
+    <adminhtml_salesbycustomergroup_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_customergroup_form" name="salescustomer_form" template="q_admin/customergroup/form.phtml">
+                <block type="q_admin/adminhtml_customergroup_tab_graph" name="salescustomer_graph" as="salescustomer_graph" template="q_admin/customergroup/diagram.phtml" />
+                <block type="q_admin/adminhtml_customergroup_tab_table" name="salescustomer_table" as="salescustomer_table" template="q_admin/customergroup/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbycustomergroup_index>
+
+    <adminhtml_salesbycustomergroup_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_customergroup_form" name="salescustomer_form" template="q_admin/customergroup/form.phtml">
+                <block type="q_admin/adminhtml_customergroup_tab_graph" name="salescustomer_graph" as="salescustomer_graph" template="q_admin/customergroup/diagram.phtml" />
+                <block type="q_admin/adminhtml_customergroup_tab_table" name="salescustomer_table" as="salescustomer_table" template="q_admin/customergroup/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbycustomergroup_ajaxblock>
+
+    <adminhtml_salesbycountry_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_country_form" name="country_form" template="q_admin/country/form.phtml">
+                <block type="q_admin/adminhtml_country_tab_graph" name="country_graph" as="country_graph" template="q_admin/country/diagram.phtml" />
+                <block type="q_admin/adminhtml_country_tab_table" name="country_table" as="country_table" template="q_admin/country/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbycountry_index>
+
+    <adminhtml_salesbycountry_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_country_form" name="country_form" template="q_admin/country/form.phtml">
+                <block type="q_admin/adminhtml_country_tab_graph" name="country_graph" as="country_graph" template="q_admin/country/diagram.phtml" />
+                <block type="q_admin/adminhtml_country_tab_table" name="country_table" as="country_table" template="q_admin/country/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbycountry_ajaxblock>
+
+    <adminhtml_salesbypayment_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_payment_form" name="payment_form" template="q_admin/payment/form.phtml">
+                <block type="q_admin/adminhtml_payment_tab_graph" name="payment_graph" as="payment_graph" template="q_admin/payment/diagram.phtml" />
+                <block type="q_admin/adminhtml_payment_tab_table" name="payment_table" as="payment_table" template="q_admin/payment/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbypayment_index>
+
+    <adminhtml_salesbypayment_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_payment_form" name="payment_form" template="q_admin/payment/form.phtml">
+                <block type="q_admin/adminhtml_payment_tab_graph" name="payment_graph" as="payment_graph" template="q_admin/payment/diagram.phtml" />
+                <block type="q_admin/adminhtml_payment_tab_table" name="payment_table" as="payment_table" template="q_admin/payment/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbypayment_ajaxblock>
+
+    <adminhtml_salesbyshipping_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_shipping_form" name="shipping_form" template="q_admin/shipping/form.phtml">
+                <block type="q_admin/adminhtml_shipping_tab_graph" name="shipping_graph" as="shipping_graph" template="q_admin/shipping/diagram.phtml" />
+                <block type="q_admin/adminhtml_shipping_tab_table" name="shipping_table" as="shipping_table" template="q_admin/shipping/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbyshipping_index>
+
+    <adminhtml_salesbyshipping_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_shipping_form" name="shipping_form" template="q_admin/shipping/form.phtml">
+                <block type="q_admin/adminhtml_shipping_tab_graph" name="shipping_graph" as="shipping_graph" template="q_admin/shipping/diagram.phtml" />
+                <block type="q_admin/adminhtml_shipping_tab_table" name="shipping_table" as="shipping_table" template="q_admin/shipping/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesbyshipping_ajaxblock>
+
+    <adminhtml_salesinhours_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_hours_form" name="hours_form" template="q_admin/hours/form.phtml">
+                <block type="q_admin/adminhtml_hours_tab_graph" name="hours_graph" as="hours_graph" template="q_admin/hours/diagram.phtml" />
+                <block type="q_admin/adminhtml_hours_tab_table" name="hours_table" as="hours_table" template="q_admin/hours/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesinhours_index>
+
+    <adminhtml_salesinhours_ajaxblock>
+        <reference name="content">
+            <block type="q_admin/adminhtml_hours_form" name="hours_form" template="q_admin/hours/form.phtml">
+                <block type="q_admin/adminhtml_hours_tab_graph" name="hours_graph" as="hours_graph" template="q_admin/hours/diagram.phtml" />
+                <block type="q_admin/adminhtml_hours_tab_table" name="hours_table" as="hours_table" template="q_admin/hours/table.phtml" />
+            </block>
+        </reference>
+    </adminhtml_salesinhours_ajaxblock>
+
+    <adminhtml_saleslifetime_index>
+        <reference name="content">
+            <block type="q_admin/adminhtml_lifetime_lifetime" name="lifetime_form" template="q_admin/lifetime/form.phtml">
+                <block type="q_admin/adminhtml_shipping_tab_graph" name="shipping_graph" as="shipping_graph" template="q_admin/shipping/diagram.phtml" />
+                <block type="q_admin/adminhtml_payment_tab_graph" name="payment_graph" as="payment_graph" template="q_admin/payment/diagram.phtml" />
+                <block type="q_admin/adminhtml_customergroup_tab_graph" name="salescustomer_graph" as="salescustomer_graph" template="q_admin/customergroup/diagram.phtml" />
+                <block type="q_admin/adminhtml_customer_tab_graph" name="customer_graph" as="customer_graph" template="q_admin/lifetime/loggedornot.phtml" />
+                <block type="q_admin/adminhtml_hours_tab_graph" name="hours_graph" as="hours_graph" template="q_admin/hours/diagram.phtml" />
+                <block type="q_admin/adminhtml_conversion_tab_graph" name="conversion" as="conversion" template="q_admin/conversion/diagram.phtml" />
+            </block>
+        </reference>
+    </adminhtml_saleslifetime_index>
+</layout>

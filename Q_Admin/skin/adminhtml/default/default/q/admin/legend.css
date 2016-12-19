@@ -1,0 +1,50 @@
+.q-diagram-chart {
+    width: 48%;
+}
+.q-diagram-table {
+    width: 45%;
+}
+.q-diagram-chart, .q-diagram-table {
+    display: inline-block;
+    vertical-align:top;
+}
+.q-diagram-container{
+    font-size: 14px;
+}
+.q_dashboard_diagram_chart{
+    width: 1000px;
+    height: 400px;
+    margin:0 auto;
+}
+.box {
+    display: block;
+    background-color: white;
+}
+.box p{
+    margin: 0 auto;
+}
+.chartLegend {
+    width: 18%;
+    padding-top: 3%;
+    color: black;
+}
+.chartLegend li span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+.chart {
+    padding-left: 3%;
+    width: 60%;
+    height: auto;
+}
+.chartLegend, .chart {
+    display: inline-block;
+    vertical-align:top;
+}
+.only-chart {
+    width: 100%;
+    height: 350px;
+    margin: 0 auto;
+}

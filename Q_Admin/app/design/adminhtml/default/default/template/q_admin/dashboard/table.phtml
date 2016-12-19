@@ -1,0 +1,34 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Dashboard_Tab_Totals
+ */
+?>
+
+<div class="box" id="dashboard_diagram_totals">
+    <div class="entry-edit">
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="a-center bold">
+                    <span><?php echo $this->__('Revenue')?></span><br />
+                    <span class="nowrap value" style="font-size:18px; color:#EA7601;"><?php echo Mage::helper('core')->currency($this->prepareDataToTable()->getRevenue(), true, false) ?></span>
+                </td>
+                <td class="a-center bold">
+                    <span><?php echo $this->__('Tax')?></span><br />
+                    <span class="nowrap value" style="font-size:18px; color:#EA7601;"><?php echo Mage::helper('core')->currency($this->prepareDataToTable()->getTax(), true, false) ?></span>
+                </td>
+                <td class="a-center bold">
+                    <span><?php echo $this->__('Shipping')?></span><br />
+                    <span class="nowrap value" style="font-size:18px; color:#EA7601;"><?php echo Mage::helper('core')->currency($this->prepareDataToTable()->getShipping(), true, false) ?></span>
+                </td>
+                <td class="a-center bold">
+                    <span><?php echo $this->__('Quantity')?></span><br />
+                    <span class="nowrap value" style="font-size:18px; color:#EA7601;"><?php echo $this->prepareDataToTable()->getQty() ?></span>
+                </td>
+            </tr>
+        </table>
+    </div
+</div>

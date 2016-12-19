@@ -1,0 +1,27 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Conversion_Tab_Table
+ */
+?>
+<div class="box" id="conversion_chart_table">
+    <table class="chartTable" >
+        <tr>
+            <th><?php echo $this->__('Period') ?></th>
+            <th><?php echo $this->__('Orders Qty') ?></th>
+            <th><?php echo $this->__('Views Qty') ?></th>
+            <th><?php echo $this->__('Conversion') ?></th>
+        </tr>
+        <?php foreach ($this->getTableData() as $conversion): ?>
+            <tr>
+                <td><?php echo $conversion->getPeriod(); ?></td>
+                <td><?php echo $conversion->getOrdersQty(); ?></td>
+                <td><?php echo $conversion->getViewsQty(); ?></td>
+                <td><?php echo $conversion->getConversion(); ?>%</td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

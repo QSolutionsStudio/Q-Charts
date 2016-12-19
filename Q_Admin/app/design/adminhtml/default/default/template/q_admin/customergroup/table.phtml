@@ -1,0 +1,31 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Customergroup_Tab_Table
+ */
+?>
+
+<?php
+$customerGroupCollection = $this->customerGroupSalesInPercent();
+?>
+<div class="box" id="customer_group_table">
+    <table class="chartTable" >
+        <tr>
+            <th><?php echo $this->__('Customer Group Id') ?></th>
+            <th><?php echo $this->__('Customer Group Name') ?></th>
+            <th><?php echo $this->__('Sales Qty') ?></th>
+            <th><?php echo $this->__('Sales by group in %') ?></th>
+        </tr>
+        <?php foreach ($customerGroupCollection as $customerGroup): ?>
+            <tr>
+                <td><?php echo $customerGroup->getCustomerGroupId(); ?></td>
+                <td><?php echo $customerGroup->getCustomerGroupCode(); ?></td>
+                <td><?php echo $customerGroup->getCustomerGroupSales(); ?></td>
+                <td><?php echo $customerGroup->getCustomerGroupSalesInPercent(); ?>%</td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

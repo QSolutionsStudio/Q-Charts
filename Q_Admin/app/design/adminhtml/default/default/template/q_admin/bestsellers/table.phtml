@@ -1,0 +1,27 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Bestsellers_Tab_Table
+ */
+?>
+<div class="box" id="chart_table">
+    <table class="chartTable">
+        <tr>
+            <th><?php echo $this->__('Period') ?></th>
+            <th><?php echo $this->__('Name') ?></th>
+            <th><?php echo $this->__('Product Id') ?></th>
+            <th><?php echo $this->__('Qty') ?></th>
+        </tr>
+        <?php foreach ($this->getBestsellerProduct() as $product): ?>
+            <tr>
+                <td><?php echo $product->getPeriod(); ?></td>
+                <td><?php echo $product->getProductName(); ?></td>
+                <td><?php echo $product->getProductId(); ?></td>
+                <td><?php echo intval($product->getQtyOrdered()); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

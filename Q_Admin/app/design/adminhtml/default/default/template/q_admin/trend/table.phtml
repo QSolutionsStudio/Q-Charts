@@ -1,0 +1,35 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Trend_Tab_Table
+ */
+?>
+<?php
+$TableTrendCollection = $this->getTableData();
+?>
+
+<div class="box" id="trend_chart_table">
+    <table class="chartTable"  >
+        <tr>
+            <th><?php echo $this->__('Period') ?></th>
+            <th><?php echo $this->__('Name') ?></th>
+            <th><?php echo $this->__('Sku') ?></th>
+            <th><?php echo $this->__('Product Id') ?></th>
+            <th><?php echo $this->__('Ordered Qty') ?></th>
+            <th><?php echo $this->__('Total') ?></th>
+        </tr>
+        <?php foreach ($TableTrendCollection as $productTrend): ?>
+            <tr>
+                <td><?php echo $productTrend->getPeriod(); ?></td>
+                <td><?php echo $productTrend->getName(); ?></td>
+                <td><?php echo $productTrend->getSku(); ?></td>
+                <td><?php echo $productTrend->getProductId(); ?></td>
+                <td><?php echo intval($productTrend->getCountedQty()); ?></td>
+                <td><?php echo Mage::helper('core')->currency($productTrend->getTotalPayment()); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

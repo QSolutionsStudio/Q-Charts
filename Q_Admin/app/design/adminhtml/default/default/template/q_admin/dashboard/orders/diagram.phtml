@@ -1,0 +1,136 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Dashboard_Tab_Orders
+ */
+?>
+
+<?php
+$chartData  = $this->getProcessedData();
+$chartItems = $chartData->getItems();
+?>
+
+<script>
+    function changeOrdersChart() {
+        new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/dashboardGraph/ajaxBlock", array('_current' => true)) ?>', {
+            method: 'post',
+            parameters: {
+                range: $('range_of_orders').value,
+                dashboard_from: $('dashboard_orders_from').value,
+                dashboard_to: $('dashboard_orders_to').value,
+                isAjax: 'true',
+                form_key: FORM_KEY
+            },
+            onSuccess: function(transport) {
+                var response = transport.responseText.evalJSON() || "no response text";
+
+                $('dashboard_orders_chart').replace(response.orders);
+                $('dashboard_amounts_chart').replace(response.amounts);
+                $('dashboard_diagram_totals').replace(response.table);
+            },
+            onFailure: function() {
+                alert('Cannot load data')
+            }
+        });
+    }
+</script>
+
+<div style="margin:0px;" id="dashboard_orders_chart">
+    <div class="switcher a-right" style="padding:5px 10px;">
+        <form id="dashboard_orders_data_range" method="post" style="padding-right: 50px;">
+            <label><?php echo $this->__('From') ?>:</label>
+            <?php echo $this->getChildHtml('html_calendar') ?>
+            <img style="" title="Select Date" class="v-middle" id="dashboard_orders_from_trig" alt="" src="<?php echo $this->getSkinUrl("images/grid-cal.gif");?> "/>
+            <input type="text" name="dashboard_orders_from" id="dashboard_orders_from" class="input-text" style="width:110px !important;" value="<?php echo date('Y-m-01') ?>" required/>
+
+            <label><?php echo $this->__('To') ?>:</label>
+            <?php echo $this->getChildHtml('html_calendar') ?>
+            <img style="" title="Select Date" class="v-middle" id="dashboard_orders_to_trig" alt="" src="<?php echo $this->getSkinUrl("images/grid-cal.gif");?> "/>
+            <input type="text" name="dashboard_orders_to" id="dashboard_orders_to" class="input-text" style="width:110px !important;" value="<?php echo date('Y-m-d') ?>"/>
+
+            <label><?php echo $this->__('Select Range') ?>:</label>
+            <select name="range" id="range_of_orders" onchange="changeOrdersChart()">
+                <?php foreach ($this->helper('adminhtml/dashboard_data')->getDatePeriods() as $value => $label):?>
+                    <?php if ($value === 'custom') :?>
+                        <option value="<?php echo $value ?>" <?php if($this->getRequest()->getParam('range')==$value): ?> selected="selected"<?php endif; ?> style="display: none"><?php echo $label ?></option>
+                    <?php elseif ($value !== 'custom'): ?>
+                        <option value="<?php echo $value ?>" <?php if($this->getRequest()->getParam('range')==$value): ?> selected="selected"<?php endif; ?>><?php echo $label ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </select>
+
+            <button id="orders_button" type="submit" form="dashboard_orders_data_range" value="Submit">Data Range</button>
+        </form>
+    </div>
+
+    <?php if(!empty($chartItems)): ?>
+        <div class="q_dashboard_diagram_chart">
+            <div class="q_dashboard_diagram_chart" id="order" style="width: 1000px; height: 400px"></div>
+        </div>
+    <?php else: ?>
+        <p class="a-center q_dashboard_diagram_chart"><?php echo $this->__('No Data Found') ?></p>
+    <?php endif;?>
+</div>
+
+<script>
+    jQuery('#orders_button').click(function(event){
+        event.preventDefault();
+        var element = document.getElementById('range_of_orders')
+        element.value = 'custom';
+        changeOrdersChart();
+    });
+
+    Calendar.setup({
+        inputField : 'dashboard_orders_from',
+        ifFormat : '%Y-%m-%d',
+        showsTime: false,
+        button : 'dashboard_orders_from_trig',
+        singleClick : true,
+    });
+    Calendar.setup({
+        inputField : 'dashboard_orders_to',
+        ifFormat : '%Y-%m-%d',
+        showsTime: false,
+        button : 'dashboard_orders_to_trig',
+        singleClick : true,
+    });
+
+    var element = document.getElementById("order");
+
+    if (element !== null) {
+        google.charts.setOnLoadCallback(OrderDrawChart);
+    }
+
+    function OrderDrawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', "Orders Qty");
+
+
+        data.addRows([
+            <?php foreach ($chartData as $orders ) {
+                $date      = $orders->getDate();
+                $ordersQty = $orders->getOrdersQty();
+                echo sprintf("['%s', %s,],", $date, $ordersQty);
+            }?>
+        ]);
+
+        var options = {
+            legend: 'none',
+            chartArea:{left:'7%',top:'5%',width:'80%',height:'70%'},
+            curveType: 'none',
+            colors: ['#ea5b0c'],
+            pointSize: 7,
+            width: 1000,
+            height: 400,
+            hAxis: {showTextEvery: 2},
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('order'));
+        chart.draw(data, options);
+    }
+
+</script>

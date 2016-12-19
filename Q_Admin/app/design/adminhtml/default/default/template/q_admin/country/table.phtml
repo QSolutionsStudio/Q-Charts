@@ -1,0 +1,33 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Country_Tab_Table
+ */
+?>
+
+<?php
+$salesByCountryCollection = $this->getSalesByCountryCollection();
+?>
+<div class="box" id="country_sales_table">
+    <table class="chartTable" >
+        <tr>
+            <th><?php echo $this->__('Country Id') ?></th>
+            <th><?php echo $this->__('Country Name') ?></th>
+            <th><?php echo $this->__('Orders Qty') ?></th>
+            <th><?php echo $this->__('Items Qty') ?></th>
+            <th><?php echo $this->__('Grand Total By Country') ?></th>
+        </tr>
+        <?php foreach ($salesByCountryCollection as $salesInCountry): ?>
+            <tr>
+                <td><?php echo $salesInCountry->getCountryId(); ?></td>
+                <td><?php echo $salesInCountry->getCountryName(); ?></td>
+                <td><?php echo $salesInCountry->getOrdersQty(); ?></td>
+                <td><?php echo $salesInCountry->getItemsQty(); ?></td>
+                <td><?php echo Mage::helper('core')->currency($salesInCountry->getGrandTotalByCountry(), true, false) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

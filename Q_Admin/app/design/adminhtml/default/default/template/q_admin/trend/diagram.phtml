@@ -1,0 +1,58 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Trend_Tab_Graph
+ */
+?>
+
+<?php
+$dataForChart = $this->getMultipleLineTrend();
+$axisName     = $this->getAxisName();
+
+$countedColumns = count($axisName);
+$colors         = $this->getDiagramHelper()->colorManipulator($countedColumns);
+?>
+
+<div class="box" id="trend_chart">
+    <?php if (!empty($dataForChart)): ?>
+        <div class="only-chart" id="trend_canvas"></div>
+    <?php elseif (empty($dataForChart)) : ?>
+        <p class="a-center"><?php echo $this->__('No data found') ?></p>
+    <?php endif; ?>
+</div>
+
+<script>
+    var element = document.getElementById("trend_canvas");
+
+    if (element !== null) {
+        google.charts.setOnLoadCallback(TrendDrawChart);
+    }
+
+    function TrendDrawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Day');
+        <?php foreach ($axisName as $name):
+        echo sprintf("data.addColumn('number', '%s');", $name);
+        endforeach; ?>
+
+        data.addRows([
+            <?php foreach ($dataForChart as $key => $trend) :?>
+            [new Date('<?php echo $key ?>'), <?php echo implode(',', $trend) ?>],
+            <?php endforeach; ?>
+        ]);
+        data.sort([{column: 0, desc:true}, {column: 1}]);
+
+        var options = {
+            chartArea:{left:'7%',top:20,width:'75%',height:'85%'},
+            curveType: 'function',
+            pointSize: 0,
+            colors: <?php echo $colors ?>,
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('trend_canvas'));
+        chart.draw(data, options);
+    }
+</script>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <cms translate="title" module="cms">
+            <title>CMS 222</title>
+            <sort_order>70</sort_order>
+        </cms>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <cms translate="title" module="cms">
+                        <title>CMS 111</title>
+                        <sort_order>70</sort_order>
+                    </cms>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+    <tabs>
+        <general translate="label" module="core">
+            <label>General</label>
+            <sort_order>100</sort_order>
+            <class>submenu-general</class>
+        </general>
+        <service translate="label" module="core">
+            <label>Services</label>
+            <sort_order>99999</sort_order>
+            <class>submenu-services</class>
+        </service>
+        <advanced translate="label" module="core">
+            <label>Advanced</label>
+            <sort_order>999999</sort_order>
+            <class>submenu-advanced</class>
+        </advanced>
+        <customer translate="label" module="customer">
+            <label>Customers</label>
+            <sort_order>300</sort_order>
+            <class>submenu-customer</class>
+        </customer>
+        <sales translate="label" module="sales">
+            <label>Sales</label>
+            <sort_order>400</sort_order>
+            <class>submenu-sales</class>
+        </sales>
+        <catalog translate="label" module="catalog">
+            <label>Catalog</label>
+            <sort_order>200</sort_order>
+            <class>submenu-catalog</class>
+        </catalog>
+    </tabs>
+</config>

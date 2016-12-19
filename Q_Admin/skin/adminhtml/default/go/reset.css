@@ -1,0 +1,158 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/******************************************/
+/***************** BASE *******************/
+/******************************************/
+:root {
+    --q_main_color:#ea5b0c;
+    --q_tab_color: #3c3c3c;
+}
+
+* {
+    -webkit-box-sizing: border-box; /* iOS <= 4 i Android <= 2.3 */
+    -moz-box-sizing: border-box; /* Firefox */
+    box-sizing: border-box; /* Chrome, Opera, Safari 5+ i IE 8+ */
+}
+
+*                       { margin:0; padding:0; }
+
+body                    { background:#ffffff;color: var(--q_tab_color); /* font:12px/1.5em "Open Sans",sans-serif !important; */ font-size: 14px; font-family: "Open Sans",sans-serif; min-height: 100%;}
+html                    {min-height: 100%}
+*:after,
+*:before                { font-family: FontAwesome, "Open Sans",sans-serif;}
+a                       { color: var(--q_main_color); text-decoration:underline; }
+a:hover                 { color:var(--q_main_color); text-decoration:underline; }
+a img                   { border:0; }
+:focus                  { outline:0; }
+
+/* Heading */
+/*h1, h2, h3, h4          { margin-bottom:.5em; line-height:1.4em; }*/
+h2                      { font-size:1.7em; }
+h3                      {color: var(--q_main_color); font-size: 1.35em; margin-bottom:  20px;font-weight:  400;}
+h4                      { color:var(--q_main_color); font-size:1.05em; }
+h5                      { font-size:1.05em; }
+h6                      { font-size:1em; }
+h1 a, h1 a:hover,
+h2 a, h2 a:hover,
+h3 a, h3 a:hover,
+h4 a, h4 a:hover        { font-weight:normal; }
+
+/* Table */
+th                      { /* padding:2px 2px 2px 2px; */ text-align:left; vertical-align:top; }
+td                      { padding:0px 0px 0px 0px;vertical-align:top;}
+
+/* Paragraph */
+p, address              { margin-bottom:.5em; }
+address                 { font-style:normal; }
+cite                    { font-style:normal; font-size:10px; }
+q:before,
+q:after                 { content:'';}
+
+/* Form */
+form                    { display:inline; }
+fieldset                { border:0; }
+legend                  { display:none; display:block !important; height:0; line-height:0; margin:0; overflow:hidden; padding:0; width:0; visibility:hidden; }
+label                   { color:#333; }
+input, select           { vertical-align:middle; }
+textarea                { overflow:auto; }
+
+/* Lists */
+ul,ol                   { list-style:none; }
+dt                      { display:block; }
+
+/* Size */
+small                   { font-size:.9em; }
+big                     { font-size:1.25em; }
+
+
+.clear                  { clear: both;}
+
+[class*=" icon-"]:before {
+    vertical-align: -5%;
+    display: inline-block;
+    text-align: center;
+    margin-right: 5px;
+    padding: 0px;
+}
+
+.entry-edit [class*=" icon-"] {
+    color: #fff;
+    float: left;
+}
+
+
+.content-header table [class^="icon-"], [class*=" icon-"] {
+    float: left;
+    /* color: #024aa0; */
+}
+.content-header [class^="icon-"], [class*=" icon-"] {
+    float: left;
+}
+
+
+.main-col-inner [class^="icon-"], [class*=" icon-"] {
+    float: left;
+}
+
+.a-right [class^="icon-"], [class*=" icon-"] {
+    float: none;
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+    margin-right: 10px !important;
+    color:  var(--q_main_color);
+}
+
+
+.collapseable [class^="icon-"], [class*=" icon-"] {
+    margin-right: 5px !important;
+    margin-top: -2px;
+}
+
+.date [class^="icon-"], .export [class^="icon-"]{
+    color: #146cc0;
+    font-size: 16px;
+}
+
+.pager [class^="icon-"]{
+    color: #146cc0;
+    float: none;
+}
+
+
+button span span [class^="icon-"], .export [class^="icon-"]{
+    color: white !important;
+    font-size: 18px;
+}
+
+
+.form-list .grid tr.headings th {
+    /*color: red !important;*/
+    padding: 10px;
+}
+
+#rateForm .grid .headings th {
+    padding: 10px;
+}
+

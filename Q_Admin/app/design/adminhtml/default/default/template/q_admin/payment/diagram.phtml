@@ -1,0 +1,57 @@
+<?php
+/**
+ * @category Qsolutions
+ * @package Q_Admin
+ * @author Michał Jóźwiak <michalj@qsolutionsstudio.com>
+ *
+ * @var $this Q_Admin_Block_Adminhtml_Payment_Tab_Graph
+ */
+?>
+
+<?php
+$paymentCollection = $this->getDataAdjustedToShow();
+$paymentItems      = $paymentCollection->getItems();
+
+$countedPayment = count($paymentCollection);
+$colors         = $this->getDiagramHelper()->colorManipulator($countedPayment);
+?>
+
+<div class="box" id="payment_chart">
+    <?php if (!empty($paymentItems)): ?>
+        <div class="only-chart" id="payment_canvas"></div>
+    <?php elseif (empty($paymentItems)) : ?>
+        <p class="a-center"><?php echo $this->__('No data found') ?></p>
+    <?php endif; ?>
+</div>
+
+<script>
+    var element = document.getElementById("payment_canvas");
+
+    if (element !== null) {
+        google.charts.setOnLoadCallback(paymentDrawChart);
+    }
+
+    function paymentDrawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Sales by payment method', 'Payment Qty'],
+            <?php
+            foreach ($paymentCollection as $payment) {
+                $payment_method_title  = $payment->getPaymentMethodTitle();
+                $payment_qty_in_period = $payment->getPaymentQtyInPeriod();
+
+                echo "['" . $payment_method_title . "', " . $payment_qty_in_period . '],';
+            }
+            ?>
+        ]);
+
+        var options = {
+            chartArea: {top:'5%', bottom: '5%'},
+            colors: <?php echo $colors ?>,
+            pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('payment_canvas'));
+
+        chart.draw(data, options);
+    }
+</script>
