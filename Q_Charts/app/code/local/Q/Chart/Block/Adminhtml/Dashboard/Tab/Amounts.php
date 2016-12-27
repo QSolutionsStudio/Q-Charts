@@ -12,7 +12,7 @@ class Q_Chart_Block_Adminhtml_Dashboard_Tab_Amounts
      */
     public function _construct()
     {
-        $this->setTemplate('q_chart/dashboard/amounts/diagram.phtml');
+        $this->setTemplate('q/chart/dashboard/amounts/diagram.phtml');
         parent::_construct();
     }
 

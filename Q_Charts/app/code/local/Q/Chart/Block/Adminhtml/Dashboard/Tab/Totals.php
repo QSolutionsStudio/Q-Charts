@@ -31,7 +31,7 @@ class Q_Chart_Block_Adminhtml_Dashboard_Tab_Totals
     public function _construct()
     {
         parent::_construct();
-        $this->setTemplate('qsolutions/dashboard/table.phtml');
+        $this->setTemplate('q/chart/dashboard/table.phtml');
         $this->setCurrency();
     }
 

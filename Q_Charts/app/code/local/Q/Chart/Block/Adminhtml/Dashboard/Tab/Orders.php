@@ -12,7 +12,7 @@ class Q_Chart_Block_Adminhtml_Dashboard_Tab_Orders
      */
     public function _construct()
     {
-        $this->setTemplate('q_chart/dashboard/orders/diagram.phtml');
+        $this->setTemplate('q/chart/dashboard/orders/diagram.phtml');
         parent::_construct();
     }
 

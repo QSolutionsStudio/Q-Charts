@@ -12,6 +12,6 @@ class Q_Chart_Block_Adminhtml_Bestsellers_Tab_Table
      */
     public function _construct()
     {
-        $this->setTemplate('qsolutions/bestsellers/table.phtml');
+        $this->setTemplate('q/chart/bestsellers/table.phtml');
     }
 }
