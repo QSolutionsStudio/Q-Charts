@@ -7,6 +7,18 @@
     </modules>
 
     <global>
+        <blocks>
+            <q_admin>
+                <class>Q_Admin_Block</class>
+            </q_admin>
+
+            <adminhtml>
+                <rewrite>
+                    <page_menu>Q_Admin_Block_Adminhtml_Menu</page_menu>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+
         <helpers>
             <q_admin>
                 <class>Q_Admin_Helper</class>
