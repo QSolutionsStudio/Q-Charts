@@ -7,30 +7,10 @@
     </modules>
 
     <global>
-        <blocks>
-            <q_admin>
-                <class>Q_Admin_Block</class>
-            </q_admin>
-            <adminhtml>
-                <rewrite>
-                    <dashboard_graph>Q_Admin_Block_Adminhtml_Dashboard_Graph</dashboard_graph>
-                    <dashboard_totals>Q_Admin_Block_Adminhtml_Dashboard_Tab_Totals</dashboard_totals>
-                    <dashboard_tab_orders>Q_Admin_Block_Adminhtml_Dashboard_Tab_Orders</dashboard_tab_orders>
-                    <dashboard_tab_amounts>Q_Admin_Block_Adminhtml_Dashboard_Tab_Amounts</dashboard_tab_amounts>
-                    <page_menu>Q_Admin_Block_Adminhtml_Menu</page_menu>
-                </rewrite>
-            </adminhtml>
-        </blocks>
-
         <helpers>
             <q_admin>
                 <class>Q_Admin_Helper</class>
             </q_admin>
-            <adminhtml>
-                <rewrite>
-                    <dashboard_data>Q_Admin_Helper_Adminhtml_Dashboard_Data</dashboard_data>
-                </rewrite>
-            </adminhtml>
         </helpers>
 
         <models>
@@ -38,14 +18,6 @@
                 <class>Q_Admin_Model</class>
                 <resourceModel>q_admin_resource</resourceModel>
             </q_admin>
-            <q_admin_resource>
-                <class>Q_Admin_Model_Resource</class>
-                <entities>
-                    <relatedproduct>
-                        <table>catalog_product_super_link</table>
-                    </relatedproduct>
-                </entities>
-            </q_admin_resource>
         </models>
         <events>
             <adminhtml_controller_action_predispatch_start>
@@ -58,28 +30,6 @@
             </adminhtml_controller_action_predispatch_start>
         </events>
     </global>
-
-    <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <diagram before="Mage_Adminhtml">Q_Admin_Adminhtml</diagram>
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
-
-    <adminhtml>
-        <layout>
-            <updates>
-                <q_admin>
-                    <file>q/admin.xml</file>
-                </q_admin>
-            </updates>
-        </layout>
-    </adminhtml>
 
     <default>
         <q_admin>
